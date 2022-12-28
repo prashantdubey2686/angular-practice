@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Admit Card
+            <a class="btn btn-primary" [routerLink]="'addadmitcard'">Add Admitcard</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Advt.No</th>
+                        <th>Discription</th>
+                        <th>Date</th>
+                        <th>Post name</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let a of users ; index as i">
+                    <td>{{a.advertise}}</td>
+                    <td><p>{{a.discription}}</p></td>
+                    <td>{{a.diclaredate}}</td>
+                    <td>{{a.postname}}</td>
+                    <td><button type="button" class="btn btn-primary">View</button></td>
+                    <td><a class="btn btn-danger" [routerLink]="['addadmitcard', i]">Edit</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+

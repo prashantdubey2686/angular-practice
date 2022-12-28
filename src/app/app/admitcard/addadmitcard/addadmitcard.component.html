@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add Result</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="addadmitcardform!" (ngSubmit)="addadmitcard()">
+          <div >
+            <div class="row" >
+              <div class="col-md-6">
+                <label for="advt">Advertise No:</label>
+                <input type="text" class="form-control" formControlName="advertise" placeholder="Enter advtise no">
+              </div>
+              <div class="col-md-6">
+                <label for="advt">Discription:</label>
+                <input type="text" class="form-control" formControlName="discription" placeholder="Enter discription">
+              </div>
+  
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="advt">Declare date:</label>
+                  <input type="text" class="form-control" formControlName="diclaredate" placeholder="Enter declare date">
+                </div>
+                <div class="col-md-6">
+                  <label for="advt">Post name:</label>
+                  <input type="text" class="form-control" formControlName="postname" placeholder="Enter post name">
+                </div>
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-primary" type="submit">Save</button>
+              <a class="btn btn-danger" [routerLink]="'/admitcard'">Back</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

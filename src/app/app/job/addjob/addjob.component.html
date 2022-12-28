@@ -1,0 +1,143 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Add Job</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="addjobForm!" (ngSubmit)="Addjob()">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="advt">Advertise no:</label>
+            <input type="text" class="form-control" placeholder="Enter Advertise no" formControlName='advertise'
+              [ngClass]="{error:getControl('advertise')?.errors && getControl('advertise')?.touched }">
+            <div *ngIf="getControl('advertise')?.errors && getControl('advertise')?.touched">
+              <small class="text-danger" *ngIf="getControl('advertise')?.errors?.['required']">advertise
+                required</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="advt">Post name:</label>
+            <input type="text" class="form-control" placeholder="Enter postname" formControlName='postname'
+              [ngClass]="{error:getControl('postname')?.errors && getControl('postname')?.touched }">
+              <div *ngIf="getControl('postname')?.errors && getControl('postname')?.touched">
+                <small class="text-danger" *ngIf="getControl('postname')?.errors?.['required']">postname required</small>
+             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="advt">Discription:</label>
+            <input type="text" class="form-control" placeholder="Enter discription" formControlName='discription'
+              [ngClass]="{error:getControl('discription')?.errors && getControl('discription')?.touched }">
+              <div *ngIf="getControl('discription')?.errors && getControl('discription')?.touched">
+                <small class="text-danger" *ngIf="getControl('discription')?.errors?.['required']">discription required</small>
+             </div>
+          </div>
+          <div class="col-md-6">
+            <label for="advt">Department:</label>
+            <input type="text" class="form-control" placeholder="Enter department" formControlName='department'
+              [ngClass]="{error:getControl('department')?.errors && getControl('department')?.touched }">
+              <div *ngIf="getControl('department')?.errors && getControl('department')?.touched">
+                <small class="text-danger" *ngIf="getControl('department')?.errors?.['required']">department required</small>
+             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="advt">Advertisement date:</label>
+            <input type="text" class="form-control" placeholder="Enter Advertisement date"
+              formControlName='advertisementdate'
+              [ngClass]="{error:getControl('advertisementdate')?.errors && getControl('advertisementdate')?.touched }">
+              <div *ngIf="getControl('advertisementdate')?.errors && getControl('advertisementdate')?.touched">
+                <small class="text-danger" *ngIf="getControl('advertisementdate')?.errors?.['required']">advertisement date required</small>
+             </div>
+          </div>
+          <div class="col-md-6">
+            <label for="advt">Start date:</label>
+            <input type="text" class="form-control" placeholder="Enter Start date" formControlName='startdate'
+              [ngClass]="{error:getControl('startdate')?.errors && getControl('startdate')?.touched }">
+              <div *ngIf="getControl('startdate')?.errors && getControl('startdate')?.touched">
+                <small class="text-danger" *ngIf="getControl('startdate')?.errors?.['required']">start date required</small>
+             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="advt">Last date:</label>
+            <input type="text" class="form-control" placeholder="Enter Last date" formControlName='lastdate'
+              [ngClass]="{error:getControl('lastdate')?.errors && getControl('lastdate')?.touched }">
+              <div *ngIf="getControl('lastdate')?.errors && getControl('lastdate')?.touched">
+                <small class="text-danger" *ngIf="getControl('lastdate')?.errors?.['required']">last date required</small>
+             </div>
+          </div>
+          <div class="col-md-6">
+            <label for="advt">Fees submission last date:</label>
+            <input type="text" class="form-control" placeholder="Fees submission last date"
+              formControlName='feessubmissionlastdate'
+              [ngClass]="{error:getControl('feessubmissionlastdate')?.errors && getControl('feessubmissionlastdate')?.touched }">
+              <div *ngIf="getControl('feessubmissionlastdate')?.errors && getControl('feessubmissionlastdate')?.touched">
+                <small class="text-danger" *ngIf="getControl('feessubmissionlastdate')?.errors?.['required']">fees submission last date required</small>
+             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="advt">Total posts:</label>
+            <input type="text" class="form-control" placeholder="Enter Total posts" formControlName='totalposts'
+              [ngClass]="{error:getControl('totalposts')?.errors && getControl('totalposts')?.touched }">
+              <div *ngIf="getControl('totalposts')?.errors && getControl('totalposts')?.touched">
+                <small class="text-danger" *ngIf="getControl('totalposts')?.errors?.['required']">total posts required</small>
+             </div>
+          </div>
+          <div class="col-md-6">
+            <label for="advt">Information about:</label>
+            <input type="text" class="form-control" placeholder="Information about" formControlName='informationabout'
+              [ngClass]="{error:getControl('informationabout')?.errors && getControl('informationabout')?.touched }">
+              <div *ngIf="getControl('informationabout')?.errors && getControl('informationabout')?.touched">
+                <small class="text-danger" *ngIf="getControl('informationabout')?.errors?.['required']">information about required</small>
+             </div>
+          </div>
+        </div>
+        <div formArrayName="categories">
+          <div class="row" *ngFor="let c of getControls();  index as i" [formGroupName]="i">
+            <div class="col-md-4">
+              <label for="sel1">Select Categry:</label>
+              <select class="form-control" id="sel1" formControlName="category"
+                [ngClass]="{error:getCategoryControlByIndex(i,'category').errors && getCategoryControlByIndex(i,'category').touched }">
+                <option value="">Select Categry</option>
+                <option value="general">General</option>
+                <option value="obc">OBC</option>
+                <option value="sc">SC/ST</option>
+                <option value="ews">EWS</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="serviceman">Service man</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="advt">Fees:</label>
+              <input type="text" class="form-control" placeholder="Fees" formControlName='fees'
+                [ngClass]="{error:getCategoryControlByIndex(i, 'fees').errors && getCategoryControlByIndex(i, 'fees').touched }">
+                <div *ngIf="getCategoryControlByIndex(i, 'fees').errors && getCategoryControlByIndex(i, 'fees').touched">
+                  <small class="text-danger" *ngIf="getCategoryControlByIndex(i, 'fees').errors?.['required']">Fees required</small>
+               </div>
+            </div>
+            <div class="col-md-4">
+              <label for="advt">Posts:</label>
+              <input type="text" class="form-control" placeholder="Enter posts" formControlName='posts'
+                [ngClass]="{error:getCategoryControlByIndex(i,'posts').errors && getCategoryControlByIndex(i,'posts').touched }">
+                <div *ngIf="getCategoryControlByIndex(i,'posts').errors && getCategoryControlByIndex(i,'posts').touched ">
+                  <small class="text-danger" *ngIf="getCategoryControlByIndex(i,'posts').errors?.['required']">Posts required</small>
+               </div>
+            </div>
+          </div>
+        </div>
+        <div><button class="btn btn-primary" (click)="addCategoryType()" type="button">Add</button></div>
+        <div>
+          <button class="btn btn-primary" type="submit">Save</button>
+          <a class="btn btn-danger" [routerLink]="'/job'">Back</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
