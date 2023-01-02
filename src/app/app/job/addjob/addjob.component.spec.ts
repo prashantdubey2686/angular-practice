@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddjobComponent } from './addjob.component';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 describe('AddjobComponent', () => {
   let component: AddjobComponent;
@@ -8,7 +10,13 @@ describe('AddjobComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddjobComponent ]
+      declarations: [ AddjobComponent ],
+      providers: [FormBuilder,{
+        provide: ActivatedRoute,
+        useValue: {
+          snapshot: { paramMap: {get:()=>{return ''}}}
+        }
+      }]
     })
     .compileComponents();
 

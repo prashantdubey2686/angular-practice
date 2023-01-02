@@ -1,28 +1,40 @@
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-           Job 
-           <button class="btn btn-primary" (click)="addjob('addjob')">Add job</button>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Advt.No</th>
-                        <th>Discription</th>
-                        <th>Date</th>
-                        <th>Detail</th>
-                    </tr>
-                </thead>
-                <tr *ngFor="let a of users;  index as i">
-                    <td>{{a.advertise}}</td>
-                    <td><p>{{a.discription}}</p></td>
-                    <td>{{a.advertisementdate}}</td>
-                    <td><button type="button" class="btn btn-primary">View</button></td>
-                    <td><a class="btn btn-danger" [routerLink]="['addjob', i]">Edit</a></td>
-                </tr>
-            </table>
-        </div>
+  <div class="card">
+    <div class="card-header">
+      Job
+      <button class="btn btn-primary" (click)="addjob('addjob')">Add job</button>
     </div>
+    <div class="card-body">
+        <ag-grid-angular
+        style="height: 350px;"
+        class="ag-theme-alpine"
+        [rowData]="rowData"
+        [defaultColDef]="defaultColDef"
+        [animateRows]="true"
+        [pagination]="true"
+        [paginationPageSize]="2"
+        [enableCellChangeFlash]="true"
+        [columnDefs]="columnDefs">
+    </ag-grid-angular>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Advt.No</th>
+            <th>Discription</th>
+            <th>Date</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let a of rowData;  index as i">
+          <td>{{a.advertise}}</td>
+          <td>
+            <p>{{a.discription}}</p>
+          </td>
+          <td>{{a.advertisementdate}}</td>
+          <td><button type="button" class="btn btn-primary">View</button></td>
+          <td><a class="btn btn-danger" [routerLink]="['addjob', i]">Edit</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
-

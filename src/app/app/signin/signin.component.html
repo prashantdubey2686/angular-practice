@@ -1,10 +1,11 @@
 <div class="container">
+    <div *ngIf="isLoader" class="k-overlay"></div>
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <div class="card">
                  <div class="card-header"><h2>Sign In</h2></div>
                      <div class="card-body">
-                        <form #signin = "ngForm" (ngSubmit)="userlogin(signin.value)">
+                        <form #signin ="ngForm" (ngSubmit)="userlogin(signin)">
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="username">User name:</label>
@@ -30,11 +31,13 @@
                                 <button class="btn btn-primary">Sign In</button>
                             </div>
                         </div>
+                        <div *ngIf="isLoader" class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div>{{items|json}}</div>
 

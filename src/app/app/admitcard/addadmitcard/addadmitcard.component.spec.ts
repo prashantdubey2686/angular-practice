@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddadmitcardComponent } from './addadmitcard.component';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 describe('AddadmitcardComponent', () => {
   let component: AddadmitcardComponent;
@@ -8,7 +10,12 @@ describe('AddadmitcardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddadmitcardComponent ]
+      declarations: [ AddadmitcardComponent ],providers:[FormBuilder,FormBuilder,{
+        provide: ActivatedRoute,
+        useValue: {
+          snapshot: { paramMap: {get:()=>{return ''}}}
+        }
+      }]
     })
     .compileComponents();
 

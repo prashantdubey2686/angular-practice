@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,8 +13,14 @@ import { SigninComponent } from './app/signin/signin.component';
 import { RegisterComponent } from './app/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './app/admin/admin.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 //import { UsdinrPipe } from './app/pippes/usdinr.pipe';
+import { AgGridAngular } from 'ag-grid-angular';
+import { AgGridModule } from 'ag-grid-angular';
+//import { ProfileComponent } from './app/profile/profile.component';
+//import { ProfileModule } from './app/profile/profile.module';
+import { ProfileModule } from './app/profile/profile.module';
+import { TokenInterceptorInterceptor } from './app/services/common/token-interceptor.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
     SigninComponent,
     RegisterComponent,
     AdminComponent,
+    //ProfileComponent,
    // UsdinrPipe
   ],
   imports: [
@@ -34,9 +41,15 @@ import {HttpClientModule} from '@angular/common/http';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-  
+    AgGridModule ,
+    ProfileModule, 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorInterceptor,
+    multi:true
+  }],
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ] 
 })
 export class AppModule { }

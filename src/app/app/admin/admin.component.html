@@ -1,2 +1,11 @@
-
-<p *ngFor="let a of Users">{{a.id}}--{{a.title | uppercase}}--{{a.body}}</p>
+<ag-grid-angular
+style="height: 350px;"
+class="ag-theme-alpine"
+[rowData]="Users"
+[defaultColDef]="defaultColDef"
+[animateRows]="true"
+[pagination]="true"
+[paginationPageSize]="8"
+[enableCellChangeFlash]="true"
+[columnDefs]="columnDefs">
+</ag-grid-angular>

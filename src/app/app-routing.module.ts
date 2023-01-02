@@ -4,6 +4,7 @@ import { HomeComponent } from './app/home/home.component';
 import { SigninComponent } from './app/signin/signin.component';
 import { RegisterComponent } from './app/register/register.component';
 import { AdminComponent } from './app/admin/admin.component';
+import { ProfileComponent } from './app/profile/profile.component';
 const routes: Routes = [
   {
     path : '',
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path : 'admin',
     component: AdminComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
     path: 'signin',

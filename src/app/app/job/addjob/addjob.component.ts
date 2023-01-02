@@ -88,13 +88,13 @@ export class AddjobComponent implements OnInit {
     return cgs;
   }
 
-  getControl(name: any) {
+  getControl = (name: any) =>  {
     return this.addjobForm!.get(name);
   }
   getControls() {
     return (this.addjobForm!.get('categories') as FormArray).controls;
   }
-  getCategoryControlByIndex(i: number, name: string) {
+  getCategoryControlByIndex(i: number, name: string)  {
     return (
       (this.addjobForm!.get('categories') as FormArray).controls[i] as FormGroup
     ).controls[name];

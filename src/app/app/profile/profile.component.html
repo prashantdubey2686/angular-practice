@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="k-overlay" *ngIf = "isLoader"></div>
+  <div class="card">
+    <div class="card-header">Profile</div>
+    <div class="card-body">
+      <form #profileForm="ngForm">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">User name:</label>
+          </div>
+          <div class="col-md-8">
+            <div *ngIf="display">{{profile.userName}}</div>
+            <div>
+              <input type="text" class="form-control" placeholder="Enter name" [(ngModel)]="profile.userName"
+                name="fullName" *ngIf="!display">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">Email:</label>
+          </div>
+          <div class="col-md-8">
+            <div *ngIf="display">{{profile.email}}</div>
+            <div>
+              <input type="text" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="profile.email"
+                *ngIf="!display">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">Role:</label>
+          </div>
+          <div class="col-md-8">
+            <div *ngIf="display">
+            <span *ngFor="let role of profile.roles">{{role}} </span>
+            </div>
+            <select name="role" multiple *ngIf="!display" [(ngModel)]="profile.roles">
+              <option *ngFor="let role of roles" [value]="role.name">{{role.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">Full-Name:</label>
+          </div>
+          <div class="col-md-8">
+            <div *ngIf="display">{{profile.fullName}}</div>
+            <div>
+              <input type="text" class="form-control" placeholder="Enter Fullname" name="Fullname"
+                [(ngModel)]="profile.fullName" *ngIf="!display">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">Phone:</label>
+          </div>
+          <div class="col-md-8">
+            <div *ngIf="display">{{profile.phoneNumber}}</div>
+            <div>
+              <input type="text" class="form-control" placeholder="Enter Ph number" name="number"
+                [(ngModel)]="profile.phoneNumber" *ngIf="!display">
+            </div>
+          </div>
+        </div>
+        <div>
+          <a type="button" class="btn btn-primary" (click)="display = !display" *ngIf="display">Edit</a>
+          <a type="button" class="btn btn-danger" *ngIf="!display" (click)="display = !display">Cancel</a>
+          <a type="button" class="btn btn-success" *ngIf="!display" (click)="onSave()">Save</a>
+        </div>
+        <div *ngIf="isLoader" class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
